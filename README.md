@@ -17,7 +17,7 @@ App has the following features
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/abhandary/Flicks/blob/master/flicks.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/abhandary/githubrepofinder/blob/master/demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
