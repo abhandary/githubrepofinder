@@ -66,11 +66,16 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         return self.repos?.count ?? 0;
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell();
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepoCell", for: indexPath) as! GitRepoTableViewCell;
+        cell.githubRepo = self.repos[indexPath.row];
+        return cell;
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100;
+    }
 }
 
 // SearchBar methods

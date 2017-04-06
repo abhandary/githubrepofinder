@@ -10,6 +10,21 @@ import UIKit
 
 class GitRepoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var avatarImage: UIImageView!
+    
+    public var githubRepo : GithubRepo! {
+        didSet {
+            populateCell()
+        }
+    }
+    
+    func populateCell() {
+        if let avatarURL = self.githubRepo.ownerAvatarURL,
+            let url = URL(string: avatarURL)  {
+            self.avatarImage.setImageWith(url)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
