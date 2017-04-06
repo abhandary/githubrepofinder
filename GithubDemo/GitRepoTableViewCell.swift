@@ -45,6 +45,10 @@ class GitRepoTableViewCell: UITableViewCell {
         if let forks = self.githubRepo.forks {
             self.forks.text = String(forks);
         }
+        
+        if let repoDescription = self.githubRepo.repoDescription {
+            self.repoDescription.text = repoDescription
+        }
     }
     
     override func awakeFromNib() {

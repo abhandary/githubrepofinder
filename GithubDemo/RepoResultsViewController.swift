@@ -18,13 +18,19 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
 
     var repos: [GithubRepo]!
 
+    var selctedLanguages = [false, false, false, false, false, false];
+    var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
+    var numberOfStarsFilter  : Int = 5
+    var filterByLanguage : Bool = false
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // setup table view
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.estimatedRowHeight = 100
+        self.tableView.estimatedRowHeight = 120
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Initialize the UISearchBar
@@ -74,7 +80,26 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100;
+        return 120;
+    }
+    
+
+    @IBAction func unwindSettings(segue : UIStoryboardSegue) {
+        if segue.identifier == "saveSegue",
+            let source = segue.source as? SettingsViewController {
+            self.languages = source.languages;
+            self.filterByLanguage = source.filterByLanguage
+            self.numberOfStarsFilter = source.numberOfStarsFilter
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSettingsSegue",
+            let destination = segue.destination as? SettingsViewController {
+            destination.languages = self.languages;
+            destination.filterByLanguage = self.filterByLanguage
+            destination.numberOfStarsFilter = self.numberOfStarsFilter
+        }
     }
 }
 
