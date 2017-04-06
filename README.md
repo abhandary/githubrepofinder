@@ -1,6 +1,6 @@
 # Lab - *Github Demo*
 
-**Github Demo** is a demo app using the [The Github Search API](https://api.github.com/search/repositories#).
+**Github Demo** is an app that uses the [The Github Search API](https://api.github.com/search/repositories#).
 
 Time spent: **5.5** hours spent in total
 
