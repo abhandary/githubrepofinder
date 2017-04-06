@@ -27,6 +27,7 @@ class GitRepoTableViewCell: UITableViewCell {
     func populateCell() {
         if let avatarURL = self.githubRepo.ownerAvatarURL,
             let url = URL(string: avatarURL)  {
+            self.avatarImage.image = nil;
             self.avatarImage.setImageWith(URLRequest(url: url), placeholderImage: nil,
                                           success:{ (imageRequest, imageResponse, image) -> Void in
                                             

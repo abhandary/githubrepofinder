@@ -80,7 +80,13 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         return cell;
     }
     
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+//        let repo = self.repos[indexPath.row];
+//        let height = repo.repoDescription?.height(withConstrainedWidth: self.tableView.frame.width - 93, font: UIFont.systemFont(ofSize: 17))
+//        return height ?? 0 + 10 + 24 + 40;
+      
         return 130;
     }
     
@@ -145,5 +151,14 @@ extension RepoResultsViewController: UISearchBarDelegate {
         searchSettings.searchString = searchBar.text
         searchBar.resignFirstResponder()
         doSearch()
+    }
+}
+
+extension String {
+    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        
+        return boundingBox.height
     }
 }

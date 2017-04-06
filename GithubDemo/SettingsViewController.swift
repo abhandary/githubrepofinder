@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.rowHeight = 50
         
         // Do any additional setup after loading the view.
     }
