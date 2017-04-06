@@ -11,6 +11,12 @@ import UIKit
 class GitRepoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var ownerHandle: UILabel!
+    @IBOutlet weak var repoDescription: UILabel!
+    @IBOutlet weak var stars: UILabel!
+    @IBOutlet weak var forks: UILabel!
+    
     
     public var githubRepo : GithubRepo! {
         didSet {
@@ -22,6 +28,22 @@ class GitRepoTableViewCell: UITableViewCell {
         if let avatarURL = self.githubRepo.ownerAvatarURL,
             let url = URL(string: avatarURL)  {
             self.avatarImage.setImageWith(url)
+        }
+        
+        if let name = self.githubRepo.name {
+            self.name.text = name
+        }
+        
+        if let ownerHandle = self.githubRepo.ownerHandle {
+            self.ownerHandle.text = ownerHandle
+        }
+        
+        if let stars = self.githubRepo.stars {
+            self.stars.text = String(stars)
+        }
+        
+        if let forks = self.githubRepo.forks {
+            self.forks.text = String(forks);
         }
     }
     

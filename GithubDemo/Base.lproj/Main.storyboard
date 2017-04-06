@@ -86,6 +86,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImage" destination="GNS-G4-GwP" id="JYA-IL-PXe"/>
+                                            <outlet property="forks" destination="zHj-YQ-nqI" id="L8l-h7-tZu"/>
+                                            <outlet property="name" destination="C1v-kd-N74" id="FSk-gu-d80"/>
+                                            <outlet property="ownerHandle" destination="DZJ-aQ-wcr" id="KzM-Tn-PgI"/>
+                                            <outlet property="repoDescription" destination="ZV4-mp-Yqy" id="lL7-zX-0m5"/>
+                                            <outlet property="stars" destination="Heb-3V-oGg" id="WL5-gl-AbW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
