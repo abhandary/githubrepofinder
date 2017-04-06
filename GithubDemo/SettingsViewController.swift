@@ -48,6 +48,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if indexPath.section == 0 {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "MinimumStarsTableViewCell") as! MinimumStarsTableViewCell;
             cell.starsLabel.text = String(self.numberOfStarsFilter);
+            cell.startsSlider.value = Float(self.numberOfStarsFilter)
             cell.delegate = self
             return cell;
         }

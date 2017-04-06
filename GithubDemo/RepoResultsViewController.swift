@@ -90,15 +90,19 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             self.languages = source.languages;
             self.filterByLanguage = source.filterByLanguage
             self.numberOfStarsFilter = source.numberOfStarsFilter
+            self.selctedLanguages = source.selctedLanguages
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSettingsSegue",
-            let destination = segue.destination as? SettingsViewController {
-            destination.languages = self.languages;
-            destination.filterByLanguage = self.filterByLanguage
-            destination.numberOfStarsFilter = self.numberOfStarsFilter
+            let destination = segue.destination as? UINavigationController,
+            let settingsVc  = destination.topViewController as? SettingsViewController  {
+            
+            settingsVc.languages = self.languages;
+            settingsVc.filterByLanguage = self.filterByLanguage
+            settingsVc.numberOfStarsFilter = self.numberOfStarsFilter
+            settingsVc.selctedLanguages = self.selctedLanguages
         }
     }
 }

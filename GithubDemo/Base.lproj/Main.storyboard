@@ -249,12 +249,12 @@
                     <navigationItem key="navigationItem" id="TRs-MO-EUI">
                         <barButtonItem key="leftBarButtonItem" title="Save" id="cht-OT-AeW">
                             <connections>
-                                <segue destination="EGf-rn-COH" kind="unwind" identifier="cancelSegue" unwindAction="unwindSettingsWithSegue:" id="0rQ-dH-A2q"/>
+                                <segue destination="EGf-rn-COH" kind="unwind" identifier="saveSegue" unwindAction="unwindSettingsWithSegue:" id="0rQ-dH-A2q"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="WNF-Z1-1KE">
                             <connections>
-                                <segue destination="EGf-rn-COH" kind="unwind" identifier="saveSegue" unwindAction="unwindSettingsWithSegue:" id="7Z2-hG-mM1"/>
+                                <segue destination="EGf-rn-COH" kind="unwind" identifier="cancelSegue" unwindAction="unwindSettingsWithSegue:" id="7Z2-hG-mM1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
