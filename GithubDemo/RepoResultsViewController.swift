@@ -20,7 +20,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
 
     var selctedLanguages = [false, false, false, false, false, false];
     var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
-    var numberOfStarsFilter  : Int = 5
+    var numberOfStarsFilter  : Int = 0
     var filterByLanguage : Bool = false
 
     
@@ -87,10 +87,20 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func unwindSettings(segue : UIStoryboardSegue) {
         if segue.identifier == "saveSegue",
             let source = segue.source as? SettingsViewController {
+            
+            // cache preferences
             self.languages = source.languages;
             self.filterByLanguage = source.filterByLanguage
             self.numberOfStarsFilter = source.numberOfStarsFilter
             self.selctedLanguages = source.selctedLanguages
+            
+            // apply to search settings
+            searchSettings.minStars = self.numberOfStarsFilter
+            searchSettings.languageFilter = self.filterByLanguage
+            searchSettings.selctedLanguages = self.selctedLanguages
+            
+            // search
+            doSearch()
         }
     }
     
@@ -99,6 +109,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             let destination = segue.destination as? UINavigationController,
             let settingsVc  = destination.topViewController as? SettingsViewController  {
             
+            // passthrough cached preferences
             settingsVc.languages = self.languages;
             settingsVc.filterByLanguage = self.filterByLanguage
             settingsVc.numberOfStarsFilter = self.numberOfStarsFilter

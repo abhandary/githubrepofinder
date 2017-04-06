@@ -13,6 +13,17 @@ class GithubRepoSearchSettings {
     var searchString: String?
     var minStars = 0
     
+    var selectedLanguages : String = "";
+    
+    var languageFilter : Bool = false
+    
+    var selctedLanguages = [false, false, false, false, false, false] {
+        didSet {
+            
+        }
+    }
+    
+    
     init() {
         
     }

@@ -14,7 +14,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     public var selctedLanguages = [false, false, false, false, false, false];
     var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
-    public var numberOfStarsFilter  : Int = 5
+    public var numberOfStarsFilter  : Int = 0
     public var filterByLanguage : Bool = false
     
     override func viewDidLoad() {
