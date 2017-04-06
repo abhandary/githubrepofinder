@@ -13,13 +13,21 @@ class GithubRepoSearchSettings {
     var searchString: String?
     var minStars = 0
     
-    var selectedLanguages : String = "";
+    var selectedLanguagesStr : String = "";
+        var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
     
     var languageFilter : Bool = false
     
-    var selctedLanguages = [false, false, false, false, false, false] {
+    var selectedLanguages = [false, false, false, false, false, false] {
         didSet {
-            
+            if languageFilter == true {
+                selectedLanguagesStr = ""
+                for ix in 0..<self.languages.count {
+                    if selectedLanguages[ix] == true {
+                        selectedLanguagesStr += "language:" + languages[ix] + (ix < self.languages.count - 1 ? " " : "")
+                    }
+                }
+            }
         }
     }
     

@@ -88,11 +88,17 @@ class GithubRepo: CustomStringConvertible {
         if let searchString = settings.searchString {
             q = q + searchString
         }
+        
+        if settings.languageFilter == true {
+            q = q + " " + settings.selectedLanguagesStr
+        }
+        
         q = q + " stars:>\(settings.minStars)"
         params["q"] = q
         
         params["sort"] = "stars"
         params["order"] = "desc"
+        
         
         return params
     }

@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
-    public var selctedLanguages = [false, false, false, false, false, false];
+    public var selectedLanguages = [false, false, false, false, false, false];
     var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
     public var numberOfStarsFilter  : Int = 0
     public var filterByLanguage : Bool = false
@@ -60,7 +60,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "FilterTableViewCell") as! FilterTableViewCell;
         cell.textLabel?.text = self.languages[indexPath.row - 1];
-        cell.accessoryType = self.selctedLanguages[indexPath.row - 1] == true ? .checkmark : .none
+        cell.accessoryType = self.selectedLanguages[indexPath.row - 1] == true ? .checkmark : .none
         cell.delegate = self;
         return cell;
     }
@@ -78,7 +78,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - FilterTableViewCellDelegate
     func selected(sender : FilterTableViewCell, state : Bool) {
-        self.selctedLanguages[self.tableView.indexPath(for: sender)!.row - 1] = state
+        self.selectedLanguages[self.tableView.indexPath(for: sender)!.row - 1] = state
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,7 +86,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = self.tableView.cellForRow(at: indexPath) as! FilterTableViewCell;
             cell.accessoryType = cell.accessoryType == .checkmark ? .none : .checkmark;
             if indexPath.row > 0 {
-                self.selctedLanguages[indexPath.row - 1] = (cell.accessoryType == .checkmark ? true : false)
+                self.selectedLanguages[indexPath.row - 1] = (cell.accessoryType == .checkmark ? true : false)
                 // self.tableView.reloadData()
             }
         }

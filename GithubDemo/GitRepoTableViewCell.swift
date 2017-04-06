@@ -27,7 +27,28 @@ class GitRepoTableViewCell: UITableViewCell {
     func populateCell() {
         if let avatarURL = self.githubRepo.ownerAvatarURL,
             let url = URL(string: avatarURL)  {
-            self.avatarImage.setImageWith(url)
+            self.avatarImage.setImageWith(URLRequest(url: url), placeholderImage: nil,
+                                          success:{ (imageRequest, imageResponse, image) -> Void in
+                                            
+                                            // imageResponse will be nil if the image is cached
+                                            if imageResponse != nil {
+
+                                                self.avatarImage?.alpha = 0.0
+                                                self.avatarImage?.image = image
+                                                self.avatarImage?.contentMode = UIViewContentMode.scaleToFill
+                                                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                                                    self.avatarImage?.alpha = 1.0
+                                                })
+                                            } else {
+
+                                                self.avatarImage?.image = image
+                                                self.avatarImage?.contentMode = UIViewContentMode.scaleToFill
+                                            }
+                },failure: { (imageRequest, imageResponse, error) -> Void in
+                    
+            })
+                
+                // .setImageWith(url)
         }
         
         if let name = self.githubRepo.name {

@@ -18,7 +18,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
 
     var repos: [GithubRepo]!
 
-    var selctedLanguages = [false, false, false, false, false, false];
+    var selectedLanguages = [false, false, false, false, false, false];
     var languages = ["Java", "JavaScript", "Objective-C", "Python", "Ruby", "Swift"];
     var numberOfStarsFilter  : Int = 0
     var filterByLanguage : Bool = false
@@ -31,6 +31,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = 120
+        self.automaticallyAdjustsScrollViewInsets = false;
         tableView.rowHeight = UITableViewAutomaticDimension
         
         // Initialize the UISearchBar
@@ -80,7 +81,7 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120;
+        return 130;
     }
     
 
@@ -92,12 +93,12 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             self.languages = source.languages;
             self.filterByLanguage = source.filterByLanguage
             self.numberOfStarsFilter = source.numberOfStarsFilter
-            self.selctedLanguages = source.selctedLanguages
+            self.selectedLanguages = source.selectedLanguages
             
             // apply to search settings
             searchSettings.minStars = self.numberOfStarsFilter
             searchSettings.languageFilter = self.filterByLanguage
-            searchSettings.selctedLanguages = self.selctedLanguages
+            searchSettings.selectedLanguages = self.selectedLanguages
             
             // search
             doSearch()
@@ -113,8 +114,12 @@ class RepoResultsViewController: UIViewController, UITableViewDataSource, UITabl
             settingsVc.languages = self.languages;
             settingsVc.filterByLanguage = self.filterByLanguage
             settingsVc.numberOfStarsFilter = self.numberOfStarsFilter
-            settingsVc.selctedLanguages = self.selctedLanguages
+            settingsVc.selectedLanguages = self.selectedLanguages
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true);
     }
 }
 
